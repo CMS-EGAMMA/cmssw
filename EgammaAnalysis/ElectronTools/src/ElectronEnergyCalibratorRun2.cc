@@ -38,10 +38,10 @@ void ElectronEnergyCalibratorRun2::calibrate(reco::GsfElectron &electron, unsign
 	float et = electron.correctedEcalEnergy() / cosh(aeta);
 	DetId seedDetId = electron.superCluster()->seed()->seed();
 	EcalRecHitCollection::const_iterator seedRecHit = recHits->find(seedDetId);
-	unsigned int gainSeedSC = 0;
-	if(seedRecHit->checkFlag(EcalRecHit::kHasSwitchToGain6)) gainSeedSC |= 0x01;
-	if(seedRecHit->checkFlag(EcalRecHit::kHasSwitchToGain1)) gainSeedSC |= 0x02;
-
+	unsigned int gainSeedSC = 12;
+	if(seedRecHit->checkFlag(EcalRecHit::kHasSwitchToGain6)) gainSeedSC = 6;
+	if(seedRecHit->checkFlag(EcalRecHit::kHasSwitchToGain1)) gainSeedSC = 1;
+        
 	scale = _correctionRetriever.ScaleCorrection(runNumber, electron.isEB(), electron.full5x5_r9(), aeta, et, gainSeedSC);
 	smear = _correctionRetriever.getSmearingSigma(runNumber, electron.isEB(), electron.full5x5_r9(), aeta, et, gainSeedSC, 0., 0.);
 
