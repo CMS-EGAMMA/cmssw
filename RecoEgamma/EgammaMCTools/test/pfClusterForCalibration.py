@@ -25,7 +25,7 @@ process.load('RecoEgamma.EgammaMCTools.pfClusterMatchedToPhotonsSelector_cfi')
 
 # Global Tag configuration ... just using the same as in the RelVal
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, '81X_upgrade2017_realistic_v26', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, '90X_upgrade2017_realistic_ExtendedZeroMaterial_EGM_PFCalib', '')
 
 process.MessageLogger.cerr.threshold = 'ERROR'
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
@@ -52,23 +52,19 @@ savedCollections = cms.untracked.vstring('drop *',
                                          'keep *_offlinePrimaryVertices_*_*',
                                          'keep *_particleFlowCluster*_*_*')
 
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(15))
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(10000))
 
 process.source = cms.Source("PoolSource",                 
                             fileNames = cms.untracked.vstring(
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/AODSIM/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/005AB6CE-27ED-E611-98CA-E0071B7A8590.root'
+        'file:/eos/user/r/rcoelhol/TestingPFClusters/AOD/00AFAD91-1635-E711-A988-5065F382A241.root',
         ),
                             secondaryFileNames = cms.untracked.vstring(
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/0416D6B7-04ED-E611-B342-E0071B7A8550.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/14829DD8-04ED-E611-8049-A0000420FE80.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/54AFE9C4-04ED-E611-952D-A0000420FE80.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/5A32C6B9-04ED-E611-B1EB-E0071B7A8550.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/60E162B8-04ED-E611-898D-E0071B7A58F0.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/6A47DD1A-FEEC-E611-81EB-A0000420FE80.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/92B923B6-04ED-E611-9DC9-24BE05C48821.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/B40E77B4-04ED-E611-9E30-E0071B7A45D0.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/C48157B5-04ED-E611-BEC1-E0071B7A45D0.root',
-        '/store/mc/PhaseIFall16DR/GluGluHToGG_M-125_13TeV_powheg_pythia8/GEN-SIM-RAW/FlatPU28to62HcalNZSRAW_81X_upgrade2017_realistic_v26-v1/100000/CAED3A16-FEEC-E611-8262-24BE05CEFB41.root'
+         'file:/eos/user/r/rcoelhol/TestingPFClusters/RAW/0C033EC9-8A34-E711-B54B-5065F382C201.root',
+         'file:/eos/user/r/rcoelhol/TestingPFClusters/RAW/46D7847E-BC34-E711-A409-0242AC130005.root',
+        'file:/eos/user/r/rcoelhol/TestingPFClusters/RAW/7050DE06-B534-E711-BCF0-141877410ACD.root',
+        'file:/eos/user/r/rcoelhol/TestingPFClusters/RAW/88081134-BC34-E711-BC69-0242AC130002.root',
+        'file:/eos/user/r/rcoelhol/TestingPFClusters/RAW/AE82A641-CF33-E711-A457-5065F3818281.root',
+        'file:/eos/user/r/rcoelhol/TestingPFClusters/RAW/FAF39EC6-D533-E711-95E6-24BE05C48831.root'
 )
                             )
 process.PFCLUSTERoutput = cms.OutputModule("PoolOutputModule",
