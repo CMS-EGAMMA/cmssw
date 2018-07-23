@@ -47,16 +47,20 @@ ecalTrkCombinationRegression = cms.PSet(
 )
 
 calibratedElectrons = cms.EDProducer("CalibratedElectronProducer",
-                                     calibratedEgammaSettings,                                   
+                                     calibratedEgammaSettings,
+                                     useSmearCorrEcalEnergyErrInComb = cms.bool(False),
                                      epCombConfig = ecalTrkCombinationRegression,
                                      src = cms.InputTag('gedGsfElectrons'),
                                      )
 
 calibratedPatElectrons = cms.EDProducer("CalibratedPatElectronProducer",
                                         calibratedEgammaPatSettings,
+                                        useSmearCorrEcalEnergyErrInComb = cms.bool(False),
                                         epCombConfig = ecalTrkCombinationRegression,
                                         src = cms.InputTag('slimmedElectrons'), 
                                        )
+
+
 
 calibratedPhotons = cms.EDProducer("CalibratedPhotonProducer",
                                    calibratedEgammaSettings,
